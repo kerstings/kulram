@@ -58,9 +58,7 @@ class Abacus extends Component {
         nr: 0,
         interactionsAllowed:true,
       },
-    );
-    console.log("Rods=",this.state.rods);
-    console.log(this.state.bw);    
+    );        
   };
 
   updateTime = (milliSeconds) => {
@@ -71,9 +69,7 @@ class Abacus extends Component {
   newValues = () => {    
     if (this.props.isAddition) {
       let randomVal1 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2))+1;    
-      let randomVal2 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2)); 
-      console.log("Randomnr1="+randomVal1+" " + Math.random());
-      console.log("Randomnr2="+randomVal2 + " " + this.state.rods);       
+      let randomVal2 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2));             
       if (randomVal1+randomVal2 >= Math.pow(10,this.state.rods)) {
         randomVal1 = Math.pow(10,this.state.rods) - 1 - randomVal2;
       }
@@ -102,9 +98,7 @@ class Abacus extends Component {
         randomVal2 = 1;
       }
       this.setState({nr1 : randomVal1*randomVal2, nr2: randomVal1, total: randomVal2})   
-    }
-    console.log("this.state.nr1="+this.state.nr1);
-    console.log("this.state.nr2="+this.state.nr2);
+    }    
   }
 
   randomValue = () => {        
