@@ -432,7 +432,7 @@ button:hover {
   z-index:1;  
   position:absolute;
   margin-top:-8.6vh;
-  margin-left:45vw;  
+  margin-left:2vw;  
   font-size:6vh;
   transform: scaleX(1.75);    
 }
@@ -441,7 +441,7 @@ button:hover {
   z-index:1;  
   position:absolute;
   margin-top:-8.6vh;
-  margin-left:45vw;  
+  margin-left:2vw;  
   font-size:5.7vh;
   transform: scaleX(1.75);    
 }
@@ -450,7 +450,7 @@ button:hover {
   z-index:1;  
   position:absolute;
   margin-top:-7.6vh;
-  margin-left:45vw;  
+  margin-left:2vw;  
   font-size:5.7vh;
   transform: scaleX(1.75);    
 }
@@ -495,7 +495,7 @@ button:hover {
   z-index:1;
   position:absolute;
   margin-top:-7.6vh;  
-  margin-left:45vw;
+  margin-left:2vw;
   transform: scaleX(1.75); 
   font-size:5.7vh;   
 }

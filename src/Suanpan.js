@@ -6,7 +6,7 @@ class Suanpan extends Component {
   constructor(props) {
     super(props);
     this.state = {      
-      beads: Array(30).fill().map(() => [
+      beads: Array(21).fill().map(() => [
         { active: false },
         { active: false },
         { active: false },
@@ -188,7 +188,7 @@ class Suanpan extends Component {
     } else if (!this.props.isShowingBead && prevProps.isShowingBead) {            
       this.randomValue();      
     } else if (this.props.isMoreRods && !prevProps.isMoreRods) {                     
-      if (this.state.rods < 25) {
+      if (this.state.rods < 21) {
         this.setValues(this.state.rods + 1);   
         return;
       }
