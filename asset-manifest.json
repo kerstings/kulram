@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/kerstings/kulram/static/css/main.cd4fb51f.css",
-    "main.js": "/kerstings/kulram/static/js/main.a4000310.js",
-    "static/js/787.f2df1ad3.chunk.js": "/kerstings/kulram/static/js/787.f2df1ad3.chunk.js",
-    "index.html": "/kerstings/kulram/index.html",
-    "main.cd4fb51f.css.map": "/kerstings/kulram/static/css/main.cd4fb51f.css.map",
-    "main.a4000310.js.map": "/kerstings/kulram/static/js/main.a4000310.js.map",
-    "787.f2df1ad3.chunk.js.map": "/kerstings/kulram/static/js/787.f2df1ad3.chunk.js.map"
+    "main.css": "/kulram/static/css/main.cd4fb51f.css",
+    "main.js": "/kulram/static/js/main.307418ae.js",
+    "static/js/787.f2df1ad3.chunk.js": "/kulram/static/js/787.f2df1ad3.chunk.js",
+    "index.html": "/kulram/index.html",
+    "main.cd4fb51f.css.map": "/kulram/static/css/main.cd4fb51f.css.map",
+    "main.307418ae.js.map": "/kulram/static/js/main.307418ae.js.map",
+    "787.f2df1ad3.chunk.js.map": "/kulram/static/js/787.f2df1ad3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cd4fb51f.css",
-    "static/js/main.a4000310.js"
+    "static/js/main.307418ae.js"
   ]
 }
