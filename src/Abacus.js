@@ -12,16 +12,21 @@ class Abacus extends Component {
         { active: false },
         { active: false },
         { active: false }
-      ]),
+      ]),      
       nr:0,
       correct:0, 
-      seconds:0,         
+      seconds:0, 
+      rods:props.initialRods,        
       maxtime: 120, 
+      bw : 89.45/(Math.max(props.initialRods,5)),
+      extra:props.initialRods*2,
       interactionsAllowed: true,      
+      beadWidth : 89.45/(Math.max(props.initialRods,5)),
+      rodWidth : 89.45/(Math.max(props.initialRods,5))/6,
+      margin: props.initialRods+89.45/(Math.max(props.initialRods,5))*5/12,                       
     };    
-    this.setValues(props.initialRods);
   }
-
+  
   setValues = (rods) => {          
     let bw = 89.45/rods;
     let oldbw = bw;
@@ -33,17 +38,17 @@ class Abacus extends Component {
   
     } else {
       this.setState({
-        extra: 0,
+        extra: 0,        
       });
     }     
     const extra = 7.6/rods;
     this.setState({
       beadWidth : bw,
       rodWidth : bw/6,
-      margin: extra/2+bw*5/12,
-      rods: rods,             
+      margin: this.state.extra/2+bw*5/12,
+      rods: rods,                   
     });
-    this.resetValue();    
+    this.resetValue();
   }  
 
   resetValue = () => {
@@ -54,6 +59,8 @@ class Abacus extends Component {
         interactionsAllowed:true,
       },
     );
+    console.log("Rods=",this.state.rods);
+    console.log(this.state.bw);    
   };
 
   updateTime = (milliSeconds) => {
@@ -64,7 +71,9 @@ class Abacus extends Component {
   newValues = () => {    
     if (this.props.isAddition) {
       let randomVal1 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2))+1;    
-      let randomVal2 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2));        
+      let randomVal2 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2)); 
+      console.log("Randomnr1="+randomVal1+" " + Math.random());
+      console.log("Randomnr2="+randomVal2 + " " + this.state.rods);       
       if (randomVal1+randomVal2 >= Math.pow(10,this.state.rods)) {
         randomVal1 = Math.pow(10,this.state.rods) - 1 - randomVal2;
       }
@@ -94,6 +103,8 @@ class Abacus extends Component {
       }
       this.setState({nr1 : randomVal1*randomVal2, nr2: randomVal1, total: randomVal2})   
     }
+    console.log("this.state.nr1="+this.state.nr1);
+    console.log("this.state.nr2="+this.state.nr2);
   }
 
   randomValue = () => {        
@@ -330,9 +341,7 @@ class Abacus extends Component {
     );
   };
 
-  render() {
-    const { rods } = this.state;
-
+  render() {    
     return (            
       <div>      
       {this.props.isCount && <div className="countnr">{this.state.nr}&#x27A1;{this.state.nr+1}</div>}
@@ -345,7 +354,7 @@ class Abacus extends Component {
       {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers">{this.state.correct}</div>}
       {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime">{this.state.correct}</div>}                       
       <div className="abacus">        
-        {Array(rods)
+        {Array(this.state.rods)
           .fill()
           .map((_, index) => this.renderRod(this.state.beads[index], index))}
       </div>     

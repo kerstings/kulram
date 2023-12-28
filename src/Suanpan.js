@@ -18,8 +18,15 @@ class Suanpan extends Component {
       nr:0,
       correct:0, 
       seconds:0,         
+      rods:props.initialRods,        
       maxtime: 120,
-      interactionsAllowed: true,   
+      interactionsAllowed: true,  
+      bw : 89.45/(Math.max(props.initialRods,5)),
+      extra:props.initialRods*2,
+      interactionsAllowed: true,      
+      beadWidth : 89.45/(Math.max(props.initialRods,5)),
+      rodWidth : 89.45/(Math.max(props.initialRods,5))/6,
+      margin: props.initialRods+89.45/(Math.max(props.initialRods,5))*5/12,   
     };    
     this.setValues(props.initialRods);
   }
@@ -367,7 +374,7 @@ class Suanpan extends Component {
       {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime-suanpan">{this.state.correct}</div>}                       
      
       <div className="suanpan">
-        {Array(rods)
+        {Array(this.state.rods)
           .fill()
           .map((_, index) => this.renderRod(this.state.beads[index], index))}
       </div>             
