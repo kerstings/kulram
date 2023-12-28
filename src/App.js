@@ -3,6 +3,7 @@ import Abacus from './Abacus';
 import Kulram from './Kulram';
 import Suanpan from './Suanpan';
 import KulramFrame from './KulramFrame';
+import './index.css';
 
 function App() {
 

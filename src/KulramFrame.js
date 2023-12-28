@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 
 const KulramFrame = () => {
   const rodPositions = [12, 20, 28, 36, 44, 52, 60, 68, 76, 84];

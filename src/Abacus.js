@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Timer from "./Timer";
+import './index.css';
 
 class Abacus extends Component {   
   constructor(props) {
