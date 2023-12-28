@@ -167,14 +167,14 @@ function App() {
     backgroundImage: value ? `url(${before})` : `url(${after})`,
     backgroundSize: "100% 100%",
     height: "12vh",
-    width: "7vw",
+    width: "8.6vw",
   });
 
   const getImage = (image) => ({
     backgroundImage: `url(${image})`,
     backgroundSize: "100% 100%",
     height: "12vh",
-    width: "7vw",
+    width: "8.6vw",
   });
 
   return (

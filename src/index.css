@@ -210,10 +210,11 @@ html {
 button {  
   margin-left:0.15vw;
   margin-right:0.15vw;
-  padding: 0.3vw 0.3vh;
+  padding: 0.1vw 0.1vh;
   background-color: white;
-  border: 1vh solid #16a0e5;    
+  border: 0.3vh solid #16a0e5;    
   box-shadow: 0 1vw 2vh rgba(0, 0, 0, 0.7);  
+  width:10vw;
 }
 
 button:hover {
@@ -221,9 +222,11 @@ button:hover {
   box-shadow: 0 1vw 1vh rgba(0, 0, 0, 0.5);
 }
 
-.button-container {
-  display: inline-block;    
-  height:10vh;    
+.button-container {    
+  height:0vh;    
+  width:100vw;
+  padding:0;
+  margin:0;
 }
 
 .nr{    
