@@ -6,7 +6,7 @@ class Abacus extends Component {
   constructor(props) {
     super(props);
     this.state = {      
-      beads: Array(21).fill().map(() => [
+      beads: Array(19).fill().map(() => [
         { active: false },
         { active: false },
         { active: false },
@@ -18,13 +18,14 @@ class Abacus extends Component {
       seconds:0, 
       rods:props.initialRods,        
       maxtime: 120, 
+      interactionsAllowed: true,    
       bw : 89.45/(Math.max(props.initialRods,5)),
-      extra:props.initialRods*2,
-      interactionsAllowed: true,      
+      extra:props.initialRods*2,        
       beadWidth : 89.45/(Math.max(props.initialRods,5)),
       rodWidth : 89.45/(Math.max(props.initialRods,5))/6,
-      margin: props.initialRods+89.45/(Math.max(props.initialRods,5))*5/12,                       
-    };    
+      margin: props.initialRods+89.45/(Math.max(props.initialRods,5))*5/9,                       
+    };   
+    this.setValues(props.initialRods); 
   }
   
   setValues = (rods) => {          
@@ -40,12 +41,12 @@ class Abacus extends Component {
       this.setState({
         extra: 0,        
       });
-    }     
+    }         
     const extra = 7.6/rods;
     this.setState({
       beadWidth : bw,
       rodWidth : bw/6,
-      margin: this.state.extra/2+bw*5/12,
+      margin: extra/2+bw*5/12,
       rods: rods,                   
     });
     this.resetValue();
@@ -181,7 +182,7 @@ class Abacus extends Component {
     } else if (!this.props.isShowingBead && prevProps.isShowingBead) {            
       this.randomValue();      
     } else if (this.props.isMoreRods && !prevProps.isMoreRods) {                     
-      if (this.state.rods < 21) {
+      if (this.state.rods < 19) {
         this.setValues(this.state.rods + 1);   
         return;
       }
@@ -209,13 +210,13 @@ class Abacus extends Component {
     if (this.props.isMultiplication && !prevProps.isMultiplication) {
       this.resetValue();
       this.newValues();
-      this.state.correct = 0;
+      this.setState({correct:0});      
       this.setState({seconds:0}); 
     }
     if (this.props.isDivision && !prevProps.isDivision) {
       this.resetValue();
       this.newValues();
-      this.state.correct = 0;
+      this.setState({correct:0});
       this.setState({seconds:0}); 
     }
     if (this.props.isCount && !prevProps.isCount) {

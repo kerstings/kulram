@@ -6,7 +6,7 @@ class Suanpan extends Component {
   constructor(props) {
     super(props);
     this.state = {      
-      beads: Array(21).fill().map(() => [
+      beads: Array(19).fill().map(() => [
         { active: false },
         { active: false },
         { active: false },
@@ -22,11 +22,10 @@ class Suanpan extends Component {
       maxtime: 120,
       interactionsAllowed: true,  
       bw : 89.45/(Math.max(props.initialRods,5)),
-      extra:props.initialRods*2,
-      interactionsAllowed: true,      
+      extra:props.initialRods*2,        
       beadWidth : 89.45/(Math.max(props.initialRods,5)),
       rodWidth : 89.45/(Math.max(props.initialRods,5))/6,
-      margin: props.initialRods+89.45/(Math.max(props.initialRods,5))*5/12,   
+      margin: props.initialRods+89.45/(Math.max(props.initialRods,5))*5/9,   
     };    
     this.setValues(props.initialRods);
   }
@@ -188,7 +187,7 @@ class Suanpan extends Component {
     } else if (!this.props.isShowingBead && prevProps.isShowingBead) {            
       this.randomValue();      
     } else if (this.props.isMoreRods && !prevProps.isMoreRods) {                     
-      if (this.state.rods < 21) {
+      if (this.state.rods < 19) {
         this.setValues(this.state.rods + 1);   
         return;
       }
@@ -201,7 +200,7 @@ class Suanpan extends Component {
     if (this.props.isAddition && !prevProps.isAddition) {
       this.resetValue();
       this.newValues();
-      this.state.correct = 0;
+      this.setState({correct:0});
     }
     if (this.props.isSubtraction && !prevProps.isSubtraction) {
       this.resetValue();
@@ -357,9 +356,7 @@ class Suanpan extends Component {
     );
   };
 
-  render() {
-    const { rods } = this.state;
-
+  render() {    
     return (            
       <div>
       {this.props.isCount && <div className="countnr-suanpan">{this.state.nr}&#x27A1;{this.state.nr+1}</div>}

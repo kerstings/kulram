@@ -432,27 +432,27 @@ button:hover {
   z-index:1;  
   position:absolute;
   margin-top:-8.6vh;
-  margin-left:2vw;  
-  font-size:6vh;
-  transform: scaleX(1.75);    
+  margin-left:13vw;  
+  font-size:6vh;  
+  transform: scaleX(1.45);    
 }
 
 .countnr-maxtime{     
   z-index:1;  
   position:absolute;
   margin-top:-8.6vh;
-  margin-left:2vw;  
+  margin-left:14.5vw;    
   font-size:5.7vh;
-  transform: scaleX(1.75);    
+  transform: scaleX(1.4);    
 }
 
 .countnr-maxtime-suanpan{     
   z-index:1;  
   position:absolute;
   margin-top:-7.6vh;
-  margin-left:2vw;  
+  margin-left:14.5vw;    
   font-size:5.7vh;
-  transform: scaleX(1.75);    
+  transform: scaleX(1.4);    
 }
 
 .answers{     
@@ -495,8 +495,8 @@ button:hover {
   z-index:1;
   position:absolute;
   margin-top:-7.6vh;  
-  margin-left:2vw;
-  transform: scaleX(1.75); 
+  margin-left:14.5vw;      
+  transform: scaleX(1.4); 
   font-size:5.7vh;   
 }
 

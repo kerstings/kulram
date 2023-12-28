@@ -198,7 +198,7 @@ function App() {
       {isAbacus && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} style={showImage(isShowingBead, "hideBead.png","showbead.png")} />  }
       {isSuanpan && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} style={showImage(isShowingBead, "hideBead.png","showbeadSuanpan.png")} />  }
       {!isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && isTeacher && <button onClick={handleRandom} style={getImage("random.png")} /> }
-      {!isCount && isTeacher && <button onClick={handleReset} style={getImage("zero.png")} /> }  
+      {!isCount && <button onClick={handleReset} style={getImage("zero.png")} /> }  
       {(isCount || isAddition || isSubtraction || isMultiplication || isDivision) && isTimer && <button onClick={handleTimer} style={getImage("timer.png")} /> }    
       {(isCount || isAddition || isSubtraction || isMultiplication || isDivision) && isTimeExpired && !isNewGame && <button onClick={handleNewGame} style={getImage("newgame.png")} /> }       
       {/* Draw the frame and suanpan, if suanpan is selected */ }
