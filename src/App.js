@@ -3,7 +3,6 @@ import Abacus from './Abacus';
 import Kulram from './Kulram';
 import Suanpan from './Suanpan';
 import KulramFrame from './KulramFrame';
-import './App.css';
 
 function App() {
 
@@ -196,7 +195,7 @@ function App() {
       {!isTeacher && !isKulram && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleTeacher} style={getImage("teacher.png")} /> }                     
       {!isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && isTeacher && <button onClick={handleToggleImageNr} style={showImage(isShowingNr, "nodigit.png","digit.png")}/> }
       {isAbacus && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} style={showImage(isShowingBead, "hideBead.png","showbead.png")} />  }
-      {isSuanpan && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} style={showImage(isShowingBead, "hideBead.png","showbeadSuanpan.png")} />  }
+      {isAbacus && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} style={showImage(isShowingBead, "hideBead.png","showbeadSuanpan.png")} />  }
       {!isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && isTeacher && <button onClick={handleRandom} style={getImage("random.png")} /> }
       {!isCount && isTeacher && <button onClick={handleReset} style={getImage("zero.png")} /> }  
       {(isCount || isAddition || isSubtraction || isMultiplication || isDivision) && isTimer && <button onClick={handleTimer} style={getImage("timer.png")} /> }    
