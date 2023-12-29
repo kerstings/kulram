@@ -7,6 +7,7 @@ import './index.css';
 
 function App() {
 
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const [isReset, setIsReset] = useState(false);
   const [isRandom, setIsRandom] = useState(false);
   const [isShowingNr, setIsShowingNr] = useState(true);
@@ -167,16 +168,49 @@ function App() {
     backgroundImage: value ? `url(${before})` : `url(${after})`,
     backgroundSize: "100% 100%",
     height: "9vh",
-    width: "8.6vw",
+    width: "8vw",
   });
 
   const getImage = (image) => ({
     backgroundImage: `url(${image})`,
     backgroundSize: "100% 100%",
     height: "9vh",
-    width: "8.6vw",
+    width: "8vw",
   });
+  
 
+  const enterFullScreen = () => {
+    const element = document.documentElement; // Use the root element for full-screen
+
+    if (element && !isFullScreen) {
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+
+      setIsFullScreen(true);
+    }
+  };
+
+  const exitFullScreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+
+    setIsFullScreen(false);
+  };
+  
   return (
     <div className="App" onContextMenu={(e)=>e.preventDefault()}>             
       <div className="button-container" />            
@@ -201,6 +235,7 @@ function App() {
       {!isCount && <button onClick={handleReset} style={getImage("zero.png")} /> }  
       {(isCount || isAddition || isSubtraction || isMultiplication || isDivision) && isTimer && <button onClick={handleTimer} style={getImage("timer.png")} /> }    
       {(isCount || isAddition || isSubtraction || isMultiplication || isDivision) && isTimeExpired && !isNewGame && <button onClick={handleNewGame} style={getImage("newgame.png")} /> }       
+      {<button onClick={isFullScreen ? exitFullScreen : enterFullScreen} style={getImage("size.png")} /> }       
       {/* Draw the frame and suanpan, if suanpan is selected */ }
       {isSuanpan && (
       <>
