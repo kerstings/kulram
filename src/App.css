@@ -193,12 +193,12 @@ html {
 }
 
 button {  
-  margin-left:0.15vw;
-  margin-right:0.15vw;
+  margin-left:0.05vw;
+  margin-right:0.05vw;
   padding: 0.3vw 0.3vh;
   background-color: white;
   border: 1vh solid #16a0e5;    
-  box-shadow: 0 1vw 2vh rgba(0, 0, 0, 0.7);  
+  box-shadow: 0 1vw 1vh rgba(0, 0, 0, 0.7);  
 }
 
 button:hover {

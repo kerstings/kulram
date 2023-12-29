@@ -17,6 +17,7 @@ function App() {
   const [isKulram, setIsKulram] = useState(false);
   const [isAbacus, setIsAbacus] = useState(true);
   const [isSuanpan, setIsSuanpan] = useState(false);
+  const [isNumber, setIsNumber] = useState(false);
   const [isCount, setIsCount] = useState(false);
   const [isAddition, setIsAddition] = useState(false);
   const [isSubtraction, setIsSubtraction] = useState(false);  
@@ -85,7 +86,14 @@ function App() {
       setIsReset(false);
     }, 0);
   };
-    
+  
+  const handleNumber = () => {    
+    setIsNumber(!isNumber);    
+    setIsShowingNr(false); 
+    setIsShowingBead(true);
+    handleNewGame();   
+  };
+
   const handleCount = () => {    
     setIsCount(!isCount);    
     if (!isCount) {      
@@ -126,6 +134,7 @@ function App() {
   };
 
   const handleHome = () => {
+    setIsNumber(false);
     setIsAddition(false);
     setIsSubtraction(false);
     setIsMultiplication(false);
@@ -167,21 +176,20 @@ function App() {
   const showImage = (value, before, after) => ({
     backgroundImage: value ? `url(${before})` : `url(${after})`,
     backgroundSize: "100% 100%",
-    height: "9vh",
-    width: "8vw",
+    height: "11vh",
+    width: "8.2vw",
   });
 
   const getImage = (image) => ({
     backgroundImage: `url(${image})`,
     backgroundSize: "100% 100%",
-    height: "9vh",
-    width: "8vw",
+    height: "11vh",
+    width: "8.2vw",    
   });
   
 
   const enterFullScreen = () => {
-    const element = document.documentElement; // Use the root element for full-screen
-
+    const element = document.documentElement; 
     if (element && !isFullScreen) {
       if (element.requestFullscreen) {
         element.requestFullscreen();
@@ -214,27 +222,28 @@ function App() {
   return (
     <div className="App" onContextMenu={(e)=>e.preventDefault()}>             
       <div className="button-container" />            
-      {(isKulram||isTeacher||isAddition||isSubtraction||isMultiplication||isDivision||isCount) && <button onClick={handleHome} style={getImage("home.png")} />  }                       
-      {!isTeacher && !isKulram && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleCount} style={getImage("count.png")} /> }
-      {!isTeacher && !isKulram && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleAddition} style={getImage("addition.png")} />  }                       
-      {!isTeacher && !isKulram && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleSubtraction} style={getImage("subtraction.png")} /> }      
-      {!isTeacher && !isKulram && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleMultiplication} style={showImage(isMultiplication, "home.png", "multiplication.png")} /> }      
-      {!isTeacher && !isKulram && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleDivision} style={showImage(isDivision, "home.png", "division.png")} /> }      
-      {isAbacus && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleMoreRods} style={getImage("moreRods.png")} />  }                       
-      {isAbacus && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleFewerRods} style={getImage("fewerRods.png")} /> }      
-      {isSuanpan && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleMoreRods} style={getImage("moreRodsSuanpan.png")} />  }                       
-      {isSuanpan && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleFewerRods} style={getImage("fewerRodsSuanpan.png")} /> }            
-      {!isAbacus && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsAbacus} style={getImage("abacus.png")} /> }   
-      {!isSuanpan && !isCount && !isAddition && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsSuanpan} style={getImage("suanpan.png")} /> }
-      {!isTeacher && !isKulram && !isCount && !isAddition && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsKulram} style={getImage("kulram.png")} /> }
-      {!isTeacher && !isKulram && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleTeacher} style={getImage("teacher.png")} /> }                     
-      {!isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && isTeacher && <button onClick={handleToggleImageNr} style={showImage(isShowingNr, "nodigit.png","digit.png")}/> }
-      {isAbacus && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} style={showImage(isShowingBead, "hideBead.png","showbead.png")} />  }
-      {isSuanpan && !isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} style={showImage(isShowingBead, "hideBead.png","showbeadSuanpan.png")} />  }
-      {!isCount && !isAddition && !isSubtraction && !isMultiplication && !isDivision && isTeacher && <button onClick={handleRandom} style={getImage("random.png")} /> }
-      {!isCount && <button onClick={handleReset} style={getImage("zero.png")} /> }  
-      {(isCount || isAddition || isSubtraction || isMultiplication || isDivision) && isTimer && <button onClick={handleTimer} style={getImage("timer.png")} /> }    
-      {(isCount || isAddition || isSubtraction || isMultiplication || isDivision) && isTimeExpired && !isNewGame && <button onClick={handleNewGame} style={getImage("newgame.png")} /> }       
+      {(isKulram||isTeacher||isNumber||isAddition||isSubtraction||isMultiplication||isDivision||isCount) && <button onClick={handleHome} style={getImage("home.png")} />  }                       
+      {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleNumber} style={getImage("digit.png")}/> }
+      {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleCount} style={getImage("count.png")} /> }
+      {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleAddition} style={getImage("addition.png")} />  }                       
+      {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleSubtraction} style={getImage("subtraction.png")} /> }      
+      {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleMultiplication} style={showImage(isMultiplication, "home.png", "multiplication.png")} /> }      
+      {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleDivision} style={showImage(isDivision, "home.png", "division.png")} /> }      
+      {isAbacus && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleMoreRods} style={getImage("moreRods.png")} />  }                       
+      {isAbacus && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleFewerRods} style={getImage("fewerRods.png")} /> }      
+      {isSuanpan && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleMoreRods} style={getImage("moreRodsSuanpan.png")} />  }                       
+      {isSuanpan && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleFewerRods} style={getImage("fewerRodsSuanpan.png")} /> }            
+      {!isAbacus && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsAbacus} style={getImage("abacus.png")} /> }   
+      {!isSuanpan && !isCount && !isNumber && !isAddition && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsSuanpan} style={getImage("suanpan.png")} /> }
+      {!isTeacher && !isKulram && !isCount && !isNumber && !isAddition && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsKulram} style={getImage("kulram.png")} /> }
+      {!isTeacher && !isKulram && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleTeacher} style={getImage("teacher.png")} /> }                     
+      {!isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && isTeacher && <button onClick={handleToggleImageNr} style={showImage(isShowingNr, "nodigit.png","digit.png")}/> }
+      {isAbacus && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} style={showImage(isShowingBead, "hideBead.png","showbead.png")} />  }
+      {isSuanpan && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} style={showImage(isShowingBead, "hideBead.png","showbeadSuanpan.png")} />  }
+      {!isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && isTeacher && <button onClick={handleRandom} style={getImage("random.png")} /> }
+      {(isNumber || isAddition || isSubtraction || isMultiplication || isDivision || isTeacher) && <button onClick={handleReset} style={getImage("zero.png")} /> }  
+      {(isCount || isNumber || isAddition || isSubtraction || isMultiplication || isDivision) && isTimer && <button onClick={handleTimer} style={getImage("timer.png")} /> }    
+      {(isCount || isNumber || isAddition || isSubtraction || isMultiplication || isDivision) && isTimeExpired && !isNewGame && <button onClick={handleNewGame} style={getImage("newgame.png")} /> }       
       {<button onClick={isFullScreen ? exitFullScreen : enterFullScreen} style={getImage("size.png")} /> }       
       {/* Draw the frame and suanpan, if suanpan is selected */ }
       {isSuanpan && (
@@ -244,7 +253,7 @@ function App() {
         <div className="horizontal horizontal-top" />
         <div className="horizontal horizontal-suanpan-middle" />
         <div className="horizontal horizontal-bottom" />                            
-        <Suanpan initialRods={3} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {false} isSuanpan= {true}  isKulram = {false} isCount = {isCount} isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
+        <Suanpan initialRods={3} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {false} isSuanpan= {true}  isKulram = {false} isCount = {isCount} isNumber = {isNumber} isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
       </>
       )}
       {/* Draw the frame and soroban (abacus), if suanpan is selected */ }
@@ -255,7 +264,7 @@ function App() {
         <div className="horizontal horizontal-top" />
         <div className="horizontal horizontal-middle" />
         <div className="horizontal horizontal-bottom" />                                 
-        <Abacus initialRods={3} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {true} isSuanpan= {false}  isKulram = {false} isCount = {isCount}  isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
+        <Abacus initialRods={3} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {true} isSuanpan= {false}  isKulram = {false} isCount = {isCount}  isNumber = {isNumber} isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
       </>
       )}
       {/* Draw the Kulram (an abacus for children) */ }

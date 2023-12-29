@@ -44,9 +44,11 @@ html {
 
 .abacus {  
   display: flex;
+  margin:0;
+  padding:0;
   margin-top:7vh;      
-  margin-left:1.5vw;
-  height:90vh;    
+  margin-left:1.5vw;  
+  height:93vh;  
 }
 
 .suanpan {  
@@ -213,22 +215,23 @@ html {
 
 button {  
   margin:0;
-  padding:0;
-  margin-left:0.15vw;
-  margin-right:0.15vw;
-  padding: 0.1vw 0.1vh;
+  padding:0;    
+  margin-left:0.0675vw;
+  margin-right:0.0675vw;
+  padding: 0.15vw 0.15vh;
   background-color: white;
   border: 0.5vh solid #16a0e5;    
-  box-shadow: 0 1vw 2vh rgba(0, 0, 0, 0.7);    
+  box-shadow: 0 0vw 0 vh rgba(0, 0, 0, 0.7);    
 }
 
 button:hover {
   background-color: #16a0e5;
-  box-shadow: 0 1vw 1vh rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0vw 0vh rgba(0, 0, 0, 0.5);
 }
 
 .button-container {      
   height:0;
+  margin-top:0.3vh;
 }
 
 .nr{    

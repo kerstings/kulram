@@ -68,7 +68,11 @@ class Abacus extends Component {
   };
 
   newValues = () => {    
-    if (this.props.isAddition) {
+    if (this.props.isNumber) {      
+      let randomVal = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2))+1;          
+      this.setState({nr1 : randomVal, total: randomVal})            
+    }
+    else if (this.props.isAddition) {
       let randomVal1 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2))+1;    
       let randomVal2 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2));             
       if (randomVal1+randomVal2 >= Math.pow(10,this.state.rods)) {
@@ -151,14 +155,14 @@ class Abacus extends Component {
         }
       }
     }    
-    if (this.state.seconds < this.state.maxtime && total === this.state.total && (this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {
+    if (this.state.seconds < this.state.maxtime && total === this.state.total && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {      
       this.setState({ interactionsAllowed: false });
        this.setState({correct:this.state.correct+1});       
        this.newValues();       
        setTimeout(() => {
         this.resetValue();
       }, 100);       
-    } else if (total === this.state.nr + 1 && !(this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {
+    } else if (total === this.state.nr + 1 && !(this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {
       this.setState({ nr: this.state.nr + 1 });
     }
   };
@@ -192,6 +196,13 @@ class Abacus extends Component {
         return;
       }        
     } 
+    if (this.props.isNumber && !prevProps.isNumber) {      
+      this.resetValue();
+      this.newValues();
+      this.setState({
+        correct:0,
+      });      
+    }
     if (this.props.isAddition && !prevProps.isAddition) {
       this.resetValue();
       this.newValues();
@@ -230,21 +241,16 @@ class Abacus extends Component {
   }
 
   toggleBead = (rodIndex, beadIndex) => {         
-
     if (!this.state.interactionsAllowed || this.state.seconds >= this.state.maxtime) {      
       return;
     }
     
-    this.setState((prevState) => {
-        //const beads = JSON.parse(JSON.stringify(prevState.beads));
-        //beads[rodIndex][beadIndex].active = !beads[rodIndex][beadIndex].active;      
-    
-        const beads = [...prevState.beads];  // Shallow copy the outer array
-        beads[rodIndex] = [...prevState.beads[rodIndex]];  // Shallow copy the inner array
+    this.setState((prevState) => {     
+        const beads = [...prevState.beads];
+        beads[rodIndex] = [...prevState.beads[rodIndex]];  
         beads[rodIndex][beadIndex] = { ...prevState.beads[rodIndex][beadIndex], 
         active: !prevState.beads[rodIndex][beadIndex].active };
-      if (beadIndex === 0) {
-        // Upper bead
+      if (beadIndex === 0) {      
       }
       else if ( beads[rodIndex][beadIndex].active === true)
         for (let i = 1; i < beadIndex; i++) {          
@@ -337,17 +343,19 @@ class Abacus extends Component {
   };
 
   render() {    
-    return (            
-      <div>      
+    return (                  
+      <div>              
+      {this.state.seconds<this.state.maxtime && this.props.isNumber && <div className="countnr">{this.state.nr1}</div>}
+      {this.state.seconds>=this.state.maxtime && this.props.isNumber && <div className="countnr-maxtime">{this.state.nr}</div>}
       {this.props.isCount && <div className="countnr">{this.state.nr}&#x27A1;{this.state.nr+1}</div>}
       {this.state.seconds>=this.state.maxtime && this.props.isAddition && <div className="countnr-maxtime">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
       {this.state.seconds<this.state.maxtime && this.props.isAddition && <div className="countnr">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
       {this.props.isSubtraction && <div className="countnr">{this.state.nr1}&nbsp;-&nbsp;{this.state.nr2}</div>}
       {this.props.isMultiplication && <div className="countnr">{this.state.nr1}&nbsp;x&nbsp;{this.state.nr2}</div>}
       {this.props.isDivision && <div className="countnr">{this.state.nr1}&nbsp;/&nbsp;{this.state.nr2}</div>}      
-      {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
-      {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers">{this.state.correct}</div>}
-      {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime">{this.state.correct}</div>}                       
+      {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
+      {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers">{this.state.correct}</div>}
+      {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime">{this.state.correct}</div>}                       
       <div className="abacus">        
         {Array(this.state.rods)
           .fill()

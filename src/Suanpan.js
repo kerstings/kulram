@@ -19,7 +19,7 @@ class Suanpan extends Component {
       correct:0, 
       seconds:0,         
       rods:props.initialRods,        
-      maxtime: 120,
+      maxtime: 5,
       interactionsAllowed: true,  
       bw : 89.45/(Math.max(props.initialRods,5)),
       extra:props.initialRods*2,        
@@ -67,7 +67,11 @@ class Suanpan extends Component {
   };
   
   newValues = () => {
-    if (this.props.isAddition) {
+    if (this.props.isNumber) {      
+      let randomVal = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2))+1;          
+      this.setState({nr1 : randomVal, total: randomVal})            
+    }
+    else if (this.props.isAddition) {
       let randomVal1 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2))+1;    
       let randomVal2 = Math.floor(Math.random() * (Math.pow(10,this.state.rods)/2));        
       if (randomVal1+randomVal2 >= Math.pow(10,this.state.rods)) {
@@ -157,7 +161,7 @@ class Suanpan extends Component {
          } 
       }            
     }       
-    if (this.state.seconds < this.state.maxtime && total===this.state.total && (this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {                           
+    if (this.state.seconds < this.state.maxtime && total===this.state.total && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {                           
       this.setState({ interactionsAllowed: false });
       this.setState({correct:this.state.correct+1});       
       this.newValues();       
@@ -165,7 +169,7 @@ class Suanpan extends Component {
          this.resetValue();
       }, 100);        
     }
-    else if (total === this.state.nr+1 && !(this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {             
+    else if (total === this.state.nr+1 && !(this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {             
         this.setState({ nr: this.state.nr + 1 });                
       }
   }
@@ -197,6 +201,13 @@ class Suanpan extends Component {
         return;
       }        
     } 
+    if (this.props.isNumber && !prevProps.isNumber) {      
+      this.resetValue();
+      this.newValues();
+      this.setState({
+        correct:0,
+      });      
+    }
     if (this.props.isAddition && !prevProps.isAddition) {
       this.resetValue();
       this.newValues();
@@ -240,7 +251,6 @@ class Suanpan extends Component {
     if (!this.state.interactionsAllowed || this.state.seconds >= this.state.maxtime) {      
       return;
     }
-
     this.setState((prevState) => {     
       const beads = [...prevState.beads];  
       beads[rodIndex] = [...prevState.beads[rodIndex]];  
@@ -359,6 +369,8 @@ class Suanpan extends Component {
   render() {    
     return (            
       <div>
+      {this.state.seconds<this.state.maxtime && this.props.isNumber && <div className="countnr-suanpan">{this.state.nr1}</div>}  
+      {this.state.seconds>=this.state.maxtime && this.props.isNumber && <div className="countnr-maxtime-suanpan">{this.state.nr}</div>}
       {this.props.isCount && <div className="countnr-suanpan">{this.state.nr}&#x27A1;{this.state.nr+1}</div>}
       {this.state.seconds>=this.state.maxtime && this.props.isAddition && <div className="countnr-maxtime-suanpan">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
       {this.state.seconds<this.state.maxtime && this.props.isAddition && <div className="countnr-suanpan">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
@@ -366,9 +378,9 @@ class Suanpan extends Component {
       {this.props.isMultiplication && <div className="countnr-suanpan">{this.state.nr1}&nbsp;x&nbsp;{this.state.nr2}</div>}
       {this.props.isDivision && <div className="countnr-suanpan">{this.state.nr1}&nbsp;/&nbsp;{this.state.nr2}</div>}
       
-      {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer-suanpan"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
-      {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-suanpan">{this.state.correct}</div>}
-      {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime-suanpan">{this.state.correct}</div>}                       
+      {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer-suanpan"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
+      {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isAddition || this.props.isNumber || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-suanpan">{this.state.correct}</div>}
+      {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isAddition || this.props.isNumber || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime-suanpan">{this.state.correct}</div>}                       
      
       <div className="suanpan">
         {Array(this.state.rods)
