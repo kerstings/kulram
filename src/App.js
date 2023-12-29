@@ -177,17 +177,16 @@ function App() {
     backgroundImage: value ? `url(${before})` : `url(${after})`,
     backgroundSize: "100% 100%",
     height: "11vh",
-    width: "8.2vw",
+    width: "8vw",
   });
 
   const getImage = (image) => ({
     backgroundImage: `url(${image})`,
     backgroundSize: "100% 100%",
     height: "11vh",
-    width: "8.2vw",    
+    width: "8vw",    
   });
-  
-
+    
   const enterFullScreen = () => {
     const element = document.documentElement; 
     if (element && !isFullScreen) {
