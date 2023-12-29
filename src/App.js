@@ -166,14 +166,14 @@ function App() {
   const showImage = (value, before, after) => ({
     backgroundImage: value ? `url(${before})` : `url(${after})`,
     backgroundSize: "100% 100%",
-    height: "12vh",
+    height: "9vh",
     width: "8.6vw",
   });
 
   const getImage = (image) => ({
     backgroundImage: `url(${image})`,
     backgroundSize: "100% 100%",
-    height: "12vh",
+    height: "9vh",
     width: "8.6vw",
   });
 
