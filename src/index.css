@@ -180,8 +180,9 @@ html {
 }
 
 .horizontal-top {
-  margin-top:0.25vh;  
-  height:4.2h;  
+  margin-top:0.25vh;    
+  height:5vh;
+  transform: translateY(-0.8vh); 
 }
 
 .horizontal-middle {
@@ -195,20 +196,22 @@ html {
 }
 
 .vertical-left {  
-  height: 87.3vh;
+  height: 88.1vh;
   width:1.2vw;
   background-color: #7d4d04;  
-  border: 0.2vw solid #4d4848;  
+  border: 0.2vw solid #4d4848;
+  transform: translateY(-0.8vh);  
   position:absolute;  
   box-shadow: .15vw 0.3vh 0.6vw rgba(0, 0, 0, 0.5);  
 }
 
 .vertical-right {  
-  height: 87.3vh;
+  height: 88.1vh;
   width:1.2vw;
   background-color: #7d4d04;  
   border: 0.2vw solid #4d4848;
-    margin-left:98.5vw;
+  margin-left:98.5vw;
+  transform: translateY(-0.8vh);  
   position:absolute;  
   box-shadow: .15vw 0.3vh 0.6vw rgba(0, 0, 0, 0.5);  
 }
@@ -237,14 +240,14 @@ button:hover {
 .nr{    
   z-index:1;
   position:relative;
-  margin-top:-84.5vh;
+  margin-top:-84.65vh;
   transform: scaleX(1.75);    
 }
 
 .nr2{    
   z-index:1;
   position:relative;
-  margin-top:55vh; /* adjusting for the beads 5*11vh */
+  margin-top:54.9vh; /* adjusting for the beads 5*11vh */
   transform: scaleX(1.75);  
 }
 
@@ -363,7 +366,7 @@ button:hover {
   height:0;  
   z-index:1;
   position:relative;
-  margin-top:-87.1vh;
+  margin-top:-87.3vh;
   transform: scaleX(1.75);    
 }
 
@@ -371,7 +374,7 @@ button:hover {
   height:0;  
   z-index:1;
   position:relative;
-  margin-top:-87.1vh;
+  margin-top:-87.3vh;
   transform: scaleX(1.75);      
   color:red;  
 }
@@ -379,7 +382,7 @@ button:hover {
 .nr2-suanpan{    
   z-index:1;
   position:relative;
-  margin-top:61vh; /* adjusting for the beads 7*8.5vh */
+  margin-top:61.0vh; /* adjusting for the beads 7*8.5vh */
   transform: scaleX(1.75);  
 }
 
