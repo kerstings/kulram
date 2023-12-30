@@ -376,9 +376,9 @@ class Suanpan extends Component {
       {this.state.seconds<this.state.maxtime && this.props.isAddition && <div className="countnr-suanpan">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
       {this.props.isSubtraction && <div className="countnr-suanpan">{this.state.nr1}&nbsp;-&nbsp;{this.state.nr2}</div>}
       {this.props.isMultiplication && <div className="countnr-suanpan">{this.state.nr1}&nbsp;x&nbsp;{this.state.nr2}</div>}
-      {this.props.isDivision && <div className="countnr-suanpan">{this.state.nr1}&nbsp;/&nbsp;{this.state.nr2}</div>}
-      
+      {this.props.isDivision && <div className="countnr-suanpan">{this.state.nr1}&nbsp;/&nbsp;{this.state.nr2}</div>}      
       {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer-suanpan"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
+      {(this.props.isTimer && this.state.seconds >=this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer">0:0</div>}     
       {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isAddition || this.props.isNumber || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-suanpan">{this.state.correct}</div>}
       {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isAddition || this.props.isNumber || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime-suanpan">{this.state.correct}</div>}                       
      

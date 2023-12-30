@@ -17,7 +17,7 @@ class Abacus extends Component {
       correct:0, 
       seconds:0, 
       rods:props.initialRods,        
-      maxtime: 5, 
+      maxtime: 120, 
       interactionsAllowed: true,    
       bw : 89.45/(Math.max(props.initialRods,5)),
       extra:props.initialRods*2,        
