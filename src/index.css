@@ -32,7 +32,7 @@ html {
   text-align: center;    
   padding:0;  
   margin:0;
-  font-size:6.1vh;
+  font-size:2.5vw;
   color:rgba(255, 255, 255, 0.9);  
   font-weight: 600;  
   position:relative;
@@ -62,8 +62,7 @@ html {
   display: flex;
   margin-top:4vh;    
   font-weight: bold;  
-  margin-left:25.0vw;
-  font-size:3vw;     
+  margin-left:25.0vw;     
 }
 
 .bead {  
@@ -444,8 +443,7 @@ button:hover {
   z-index:1;  
   position:absolute;
   margin-top:-8.6vh;
-  margin-left:13vw;  
-  font-size:6vh;  
+  margin-left:13vw;    
   transform: scaleX(1.45);    
 }
 
@@ -453,8 +451,7 @@ button:hover {
   z-index:1;  
   position:absolute;
   margin-top:-8.6vh;
-  margin-left:14.5vw;    
-  font-size:5.7vh;
+  margin-left:14.5vw;      
   transform: scaleX(1.4);    
 }
 
@@ -462,8 +459,7 @@ button:hover {
   z-index:1;  
   position:absolute;
   margin-top:-7.6vh;
-  margin-left:14.5vw;    
-  font-size:5.7vh;
+  margin-left:14.5vw;      
   transform: scaleX(1.4);    
 }
 
@@ -508,8 +504,7 @@ button:hover {
   position:absolute;
   margin-top:-7.6vh;  
   margin-left:14.5vw;      
-  transform: scaleX(1.4); 
-  font-size:5.7vh;   
+  transform: scaleX(1.4);    
 }
 
 .timer {
@@ -517,7 +512,7 @@ button:hover {
   margin-top:-18vh;
   margin-left:84.5vw;
   color:black;
-  font-size:6.6vh;    
+  font-size:3.3vw;    
 }
 
 .timer-suanpan {
@@ -525,5 +520,5 @@ button:hover {
   margin-top:-17vh;
   margin-left:84.5vw;
   color:black;
-  font-size:6.6vh;    
+  font-size:3.3vw;    
 }

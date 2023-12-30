@@ -17,7 +17,7 @@ class Abacus extends Component {
       correct:0, 
       seconds:0, 
       rods:props.initialRods,        
-      maxtime: 120, 
+      maxtime: 5, 
       interactionsAllowed: true,    
       bw : 89.45/(Math.max(props.initialRods,5)),
       extra:props.initialRods*2,        
@@ -124,7 +124,6 @@ class Abacus extends Component {
     const { beads } = this.state;
     let total = 0;
     let rodvalue = 0;
-  
     for (let rod = 0; rod < this.state.rods; rod++) {
       for (let bead = 0; bead < 5; bead++) {
         if (beads[rod][bead].active) {
@@ -135,7 +134,6 @@ class Abacus extends Component {
         }
       }
     }
-  
     if (!beads[rodIndex][beadIndex].active) {
       if (beadIndex === 0) {
         total += 5 * Math.pow(10, this.state.rods - rodIndex - 1);
@@ -243,8 +241,7 @@ class Abacus extends Component {
   toggleBead = (rodIndex, beadIndex) => {         
     if (!this.state.interactionsAllowed || this.state.seconds >= this.state.maxtime) {      
       return;
-    }
-    
+    }    
     this.setState((prevState) => {     
         const beads = [...prevState.beads];
         beads[rodIndex] = [...prevState.beads[rodIndex]];  
@@ -354,6 +351,7 @@ class Abacus extends Component {
       {this.props.isMultiplication && <div className="countnr">{this.state.nr1}&nbsp;x&nbsp;{this.state.nr2}</div>}
       {this.props.isDivision && <div className="countnr">{this.state.nr1}&nbsp;/&nbsp;{this.state.nr2}</div>}      
       {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
+      {(this.props.isTimer && this.state.seconds >=this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer">0:0</div>}     
       {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers">{this.state.correct}</div>}
       {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime">{this.state.correct}</div>}                       
       <div className="abacus">        
