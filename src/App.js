@@ -244,15 +244,15 @@ function App() {
       {(isCount || isNumber || isAddition || isSubtraction || isMultiplication || isDivision) && isTimer && <button onClick={handleTimer} style={getImage("timer.png")} /> }    
       {(isCount || isNumber || isAddition || isSubtraction || isMultiplication || isDivision) && isTimeExpired && !isNewGame && <button onClick={handleNewGame} style={getImage("newgame.png")} /> }       
       {<button onClick={isFullScreen ? exitFullScreen : enterFullScreen} style={getImage("size.png")} /> }       
-      {/* Draw the frame and suanpan, if suanpan is selected */ }
+      {/* Draw the frame and suanpan, if suanpan is selected */ }      
       {isSuanpan && (
-      <>
+      <>        
         <div className="vertical-left" />
         <div className="vertical-right" />        
         <div className="horizontal horizontal-top" />
-        <div className="horizontal horizontal-middle" />
+        <div className="horizontal horizontal-suanpan-middle" />
         <div className="horizontal horizontal-bottom" />                                    
-        <Suanpan initialRods={3} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {false} isSuanpan= {true}  isKulram = {false} isCount = {isCount} isNumber = {isNumber} isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
+        <Suanpan initialRods={3} isFullScreen = {isFullScreen} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {false} isSuanpan= {true}  isKulram = {false} isCount = {isCount} isNumber = {isNumber} isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
       </>
       )}
       {/* Draw the frame and soroban (abacus), if suanpan is selected */ }
@@ -263,7 +263,7 @@ function App() {
         <div className="horizontal horizontal-top" />
         <div className="horizontal horizontal-middle" />
         <div className="horizontal horizontal-bottom" />                                           
-        <Abacus initialRods={3} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {true} isSuanpan= {false}  isKulram = {false} isCount = {isCount}  isNumber = {isNumber} isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
+        <Abacus initialRods={3} isFullScreen = {isFullScreen} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {true} isSuanpan= {false}  isKulram = {false} isCount = {isCount}  isNumber = {isNumber} isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
       </>
       )}
       {/* Draw the Kulram (an abacus for children) */ }

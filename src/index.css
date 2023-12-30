@@ -120,7 +120,7 @@ html {
     rgb(1, 20, 1) 100%    
     );
   border-radius: 40% 40% 40% 40%;   
-  transform: translateY(11vh); 
+  transform: translateY(11.3vh); 
   box-shadow: 1vw 2vh 2vw rgba(0, 0, 0, 0.4);   
 }
 
@@ -141,7 +141,7 @@ html {
     rgb(0, 0, 51) 100%  
   );
   border-radius: 40% 40% 40% 40%;
-  transform: translateY(0.5vh);     
+  transform: translateY(0.3vh);     
   box-shadow: 1vw 2vh 2vw rgba(0, 0, 0, 0.4);    
 }
 
@@ -180,7 +180,7 @@ html {
 }
 
 .horizontal-middle {
-  margin-top:26.2vh;
+  margin-top:26.5vh;
   height:2.5vh;
 }
 
@@ -229,13 +229,6 @@ button:hover {
 .button-container {      
   height:0;
   margin-top:0.3vh;
-}
-
-.nr{    
-  z-index:1;
-  position:absolute;  
-  top:9.5vh;
-  transform: scaleX(1.5);     
 }
 
 .rod-kulram { 
@@ -344,13 +337,13 @@ button:hover {
 }
 
 .horizontal-suanpan-middle {
-  margin-top:29.7vh;
-  height:2.5vh;
+  margin-top:30vh;
+  height:1.1vh;
 }
 
 .upper-bead-suanpan {
-  transform: translateY(1.5vh);     
-  height:8.8vh;  
+  transform: translateY(1.3vh);     
+  height:9vh;  
   border-radius: 40% 40% 40% 40%;  
 }
 
@@ -359,7 +352,7 @@ button:hover {
   padding-right:0.2vw;  
   margin-left:0.5vw;
   margin-right:0.5vw;
-  height: 8.8vh;
+  height: 9vh;
   background: radial-gradient(
     ellipse at 33% 33%,            
     rgb(241, 248, 236) 0%, 
@@ -371,13 +364,13 @@ button:hover {
     rgb(1, 20, 1) 100%    
     );
   border-radius: 40% 40% 40% 40%;     
-  transform: translateY(8.8vh); 
+  transform: translateY(9vh); 
   box-shadow: 1vw 2vh 2vw rgba(0, 0, 0, 0.4);   
 }
 
 .lower-bead-suanpan {
-  height:8.8vh;    
-  transform: translateY(20.5vh); 
+  height:9vh;    
+  transform: translateY(19vh); 
   border-radius: 40% 40% 40% 40%;   
 }
 
@@ -392,40 +385,54 @@ button:hover {
     rgb(1, 35, 1) 90%,
     rgb(1, 20, 1) 100%
   );          
-  transform: translateY(11.7vh); 
+  transform: translateY(10vh); 
   box-shadow: 1vw 2vh 2vw rgba(0, 0, 0, 0.4);  
   border-radius: 40% 40% 40% 40%;     
 }
 
+.nr{    
+  z-index:1;
+  position:absolute;  
+  top:9.8vh;
+  transform: scaleX(1.75);     
+}
+
+.nr-fullscreen{    
+  z-index:1;
+  position:absolute;  
+  top:10.3vh;
+  transform: scaleX(1.75);     
+}
+
 .countnr{     
   z-index:1;  
-  top:10vh;
+  top:9.8vh;
   position:absolute;  
   margin-left:13vw;    
   transform: scaleX(1.45);    
 }
 
-.countnr-maxtime{     
+.countnr-fullscreen{     
   z-index:1;  
-  position:absolute;
-  top:10vh;
-  margin-left:14.5vw;      
-  transform: scaleX(1.4);    
+  top:10.3vh;
+  position:absolute;  
+  margin-left:13vw;    
+  transform: scaleX(1.45);    
 }
 
 .answers{     
   z-index:1;  
   position:absolute;
-  top:10vh;
+  top:9.8vh;
   margin-left:87.5vw; 
   color:yellow; 
   transform: scaleX(1.75);    
 }
 
-.answers-maxtime{     
+.answers-fullscreen{     
   z-index:1;  
   position:absolute;
-  top:10vh;
+  top:10.3vh;
   margin-left:87.5vw; 
   color:yellow; 
   transform: scaleX(1.75);    

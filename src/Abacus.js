@@ -235,7 +235,7 @@ class Abacus extends Component {
     if (!this.props.isCount && prevProps.isCount) {
       this.resetValue();      
       this.setState({seconds:0}); 
-    }       
+    }           
   }
 
   toggleBead = (rodIndex, beadIndex) => {         
@@ -328,32 +328,65 @@ class Abacus extends Component {
           ))}
         </div>  
         }
-      <div className="nr">{this.props.isShowingNr && this.calculateTotal(rodIndex)}</div>              
+      <div className={this.props.isFullScreen ? "nr-fullscreen" : "nr"}>
+        {this.props.isShowingNr && this.calculateTotal(rodIndex)}
+      </div>
       </div>      
     );
   };
 
   render() {    
     return (                  
-      <div>              
-      {this.state.seconds<this.state.maxtime && this.props.isNumber && <div className="countnr">{this.state.nr1}</div>}
-      {this.state.seconds>=this.state.maxtime && this.props.isNumber && <div className="countnr-maxtime">{this.state.nr}</div>}
-      {this.props.isCount && <div className="countnr">{this.state.nr}&#x27A1;{this.state.nr+1}</div>}
-      {this.state.seconds>=this.state.maxtime && this.props.isAddition && <div className="countnr-maxtime">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
-      {this.state.seconds<this.state.maxtime && this.props.isAddition && <div className="countnr">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
-      {this.props.isSubtraction && <div className="countnr">{this.state.nr1}&nbsp;-&nbsp;{this.state.nr2}</div>}
-      {this.props.isMultiplication && <div className="countnr">{this.state.nr1}&nbsp;x&nbsp;{this.state.nr2}</div>}
-      {this.props.isDivision && <div className="countnr">{this.state.nr1}&nbsp;/&nbsp;{this.state.nr2}</div>}      
-      {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
-      {(this.props.isTimer && this.state.seconds >=this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer">0:0</div>}     
-      {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers">{this.state.correct}</div>}
-      {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime">{this.state.correct}</div>}                       
-      <div className="abacus">        
+      <div>                        
+      {this.props.isNumber && (
+        <div className={this.props.isFullScreen ? "countnr-fullscreen" : "countnr"}>
+        {this.state.nr1}
+        </div>
+      )}
+
+    {this.props.isCount && (
+      <div className={this.props.isFullScreen ? "countnr-fullscreen" : "countnr"}>
+      {this.state.nr}&#x27A1;{this.state.nr + 1}
+      </div>
+    )}
+
+    {this.props.isAddition && (
+      <div className={this.props.isFullScreen ? "countnr-fullscreen" : "countnr"}>
+      {this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}
+      </div>
+    )}
+
+    {this.props.isSubtraction && (
+      <div className={this.props.isFullScreen ? "countnr-fullscreen" : "countnr"}>
+      {this.state.nr1}&nbsp;-&nbsp;{this.state.nr2}
+      </div>
+    )}
+
+    {this.props.isMultiplication && (
+      <div className={this.props.isFullScreen ? "countnr-fullscreen" : "countnr"}>
+      {this.state.nr1}&nbsp;x&nbsp;{this.state.nr2}
+      </div>
+    )}
+
+    {this.props.isDivision && (
+      <div className={this.props.isFullScreen ? "countnr-fullscreen" : "countnr"}>
+      {this.state.nr1}&nbsp;/&nbsp;{this.state.nr2}
+      </div>
+    )}
+
+    {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
+    {(this.props.isTimer && this.state.seconds >=this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer">0:0</div>}     
+    {this.props.isTimer && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) && (
+        <div className={this.props.isFullScreen ? "answers-fullscreen" : "answers"}>
+        {this.state.correct}
+        </div>
+    )}
+    <div className="abacus">        
         {Array(this.state.rods)
           .fill()
           .map((_, index) => this.renderRod(this.state.beads[index], index))}
-      </div>     
-      </div>             
+    </div>     
+    </div>             
     );
   }
 }
