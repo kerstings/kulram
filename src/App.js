@@ -199,7 +199,6 @@ function App() {
       } else if (element.msRequestFullscreen) {
         element.msRequestFullscreen();
       }
-
       setIsFullScreen(true);
     }
   };
@@ -214,7 +213,6 @@ function App() {
     } else if (document.msExitFullscreen) {
       document.msExitFullscreen();
     }
-
     setIsFullScreen(false);
   };
   
