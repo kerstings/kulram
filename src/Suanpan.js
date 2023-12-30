@@ -331,17 +331,12 @@ class Suanpan extends Component {
             style={beadStyle}>          
           </div> 
         }
-       <div
-            className={`bead-suanpan-divider`}
-            style = {beadStyle}>              
-        </div>
-        <div className={`bead-suanpan-divider`}></div>          
-        <div style={{marginTop:2.4+'vh'}}>
+        <div>
         {this.props.isShowingBead && <div>          
           {beads.slice(2).map((bead, beadIndex) => (            
             <div
               key={beadIndex}
-              className={`lower-bead-suanpan bead ${bead.active ? 'active2' : ''}`}
+              className={`lower-bead-suanpan bead ${bead.active ? 'lower-bead-suanpan-active' : 'lower-bead-suanpan'}`}
               onClick={() => {
                 this.toggleBead(rodIndex, beadIndex+2);
                 this.checkValue(rodIndex, beadIndex+2);
@@ -360,8 +355,7 @@ class Suanpan extends Component {
           </div>        
         }
         </div>  
-        <div className="nr-suanpan">{this.props.isShowingNr && this.props.isShowingBead && this.calculateTotal(rodIndex)}</div>        
-        <div className="nr2-suanpan">{this.props.isShowingNr && !this.props.isShowingBead && this.calculateTotal(rodIndex)}</div>                       
+        <div className="nr">{this.props.isShowingNr && this.calculateTotal(rodIndex)}</div>                
       </div>
     );
   };
@@ -369,18 +363,18 @@ class Suanpan extends Component {
   render() {    
     return (            
       <div>
-      {this.state.seconds<this.state.maxtime && this.props.isNumber && <div className="countnr-suanpan">{this.state.nr1}</div>}  
-      {this.state.seconds>=this.state.maxtime && this.props.isNumber && <div className="countnr-maxtime-suanpan">{this.state.nr}</div>}
-      {this.props.isCount && <div className="countnr-suanpan">{this.state.nr}&#x27A1;{this.state.nr+1}</div>}
-      {this.state.seconds>=this.state.maxtime && this.props.isAddition && <div className="countnr-maxtime-suanpan">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
-      {this.state.seconds<this.state.maxtime && this.props.isAddition && <div className="countnr-suanpan">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
-      {this.props.isSubtraction && <div className="countnr-suanpan">{this.state.nr1}&nbsp;-&nbsp;{this.state.nr2}</div>}
-      {this.props.isMultiplication && <div className="countnr-suanpan">{this.state.nr1}&nbsp;x&nbsp;{this.state.nr2}</div>}
-      {this.props.isDivision && <div className="countnr-suanpan">{this.state.nr1}&nbsp;/&nbsp;{this.state.nr2}</div>}      
-      {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer-suanpan"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
+      {this.state.seconds<this.state.maxtime && this.props.isNumber && <div className="countnr">{this.state.nr1}</div>}  
+      {this.state.seconds>=this.state.maxtime && this.props.isNumber && <div className="countnr-maxtime">{this.state.nr}</div>}
+      {this.props.isCount && <div className="countnr">{this.state.nr}&#x27A1;{this.state.nr+1}</div>}
+      {this.state.seconds>=this.state.maxtime && this.props.isAddition && <div className="countnr-maxtime">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
+      {this.state.seconds<this.state.maxtime && this.props.isAddition && <div className="countnr">{this.state.nr1}&nbsp;+&nbsp;{this.state.nr2}</div>}
+      {this.props.isSubtraction && <div className="countnr">{this.state.nr1}&nbsp;-&nbsp;{this.state.nr2}</div>}
+      {this.props.isMultiplication && <div className="countnr">{this.state.nr1}&nbsp;x&nbsp;{this.state.nr2}</div>}
+      {this.props.isDivision && <div className="countnr">{this.state.nr1}&nbsp;/&nbsp;{this.state.nr2}</div>}      
+      {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
       {(this.props.isTimer && this.state.seconds >=this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer">0:0</div>}     
-      {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isAddition || this.props.isNumber || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-suanpan">{this.state.correct}</div>}
-      {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isAddition || this.props.isNumber || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime-suanpan">{this.state.correct}</div>}                       
+      {(!this.props.isTimer || this.state.seconds<this.state.maxtime) && (this.props.isAddition || this.props.isNumber || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers">{this.state.correct}</div>}
+      {(!this.props.isTimer || this.state.seconds>=this.state.maxtime) && (this.props.isAddition || this.props.isNumber || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="answers-maxtime">{this.state.correct}</div>}                       
      
       <div className="suanpan">
         {Array(this.state.rods)

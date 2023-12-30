@@ -222,7 +222,7 @@ function App() {
     <div className="App" onContextMenu={(e)=>e.preventDefault()}>             
       <div className="button-container" />            
       {(isKulram||isTeacher||isNumber||isAddition||isSubtraction||isMultiplication||isDivision||isCount) && <button onClick={handleHome} style={getImage("home.png")} />  }                       
-      {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleNumber} style={getImage("digit.png")}/> }
+      {!isTeacher && !isKulram && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleNumber} style={getImage("digit.png")}/> }
       {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleCount} style={getImage("count.png")} /> }
       {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleAddition} style={getImage("addition.png")} />  }                       
       {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleSubtraction} style={getImage("subtraction.png")} /> }      
@@ -250,8 +250,8 @@ function App() {
         <div className="vertical-left" />
         <div className="vertical-right" />        
         <div className="horizontal horizontal-top" />
-        <div className="horizontal horizontal-suanpan-middle" />
-        <div className="horizontal horizontal-bottom" />                            
+        <div className="horizontal horizontal-middle" />
+        <div className="horizontal horizontal-bottom" />                                    
         <Suanpan initialRods={3} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {false} isSuanpan= {true}  isKulram = {false} isCount = {isCount} isNumber = {isNumber} isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
       </>
       )}
@@ -262,7 +262,7 @@ function App() {
         <div className="vertical-right" />        
         <div className="horizontal horizontal-top" />
         <div className="horizontal horizontal-middle" />
-        <div className="horizontal horizontal-bottom" />                                 
+        <div className="horizontal horizontal-bottom" />                                           
         <Abacus initialRods={3} isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead}  isAbacus = {true} isSuanpan= {false}  isKulram = {false} isCount = {isCount}  isNumber = {isNumber} isAddition = {isAddition} isSubtraction = {isSubtraction} isMultiplication = {isMultiplication} isDivision = {isDivision} onMaxTime = {handleMaxTimeExceeded} isNewGame = {isNewGame} isTimer = {isTimer} />
       </>
       )}

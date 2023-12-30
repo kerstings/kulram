@@ -302,12 +302,7 @@ class Abacus extends Component {
             }}            
             style={beadStyle}>          
           </div> 
-        }
-        <div
-            className={`bead-divider ${beads[0].active ? 'bead-divider-active' : ''}`}
-            style = {beadStyle}>              
-        </div>
-        <div className={`bead-divider`}></div>        
+        }        
         {this.props.isShowingBead && <div>
           {beads.slice(1).map((bead, beadIndex) => (
             <div
@@ -333,8 +328,7 @@ class Abacus extends Component {
           ))}
         </div>  
         }
-      <div className="nr">{this.props.isShowingNr && this.props.isShowingBead && this.calculateTotal(rodIndex)}</div>        
-      <div className="nr2">{this.props.isShowingNr && !this.props.isShowingBead && this.calculateTotal(rodIndex)}</div>                    
+      <div className="nr">{this.props.isShowingNr && this.calculateTotal(rodIndex)}</div>              
       </div>      
     );
   };
