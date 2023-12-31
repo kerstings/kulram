@@ -184,7 +184,7 @@ class Abacus extends Component {
     } else if (!this.props.isShowingBead && prevProps.isShowingBead) {            
       this.randomValue();      
     } else if (this.props.isMoreRods && !prevProps.isMoreRods) {                     
-      if (this.state.rods < 19) {
+      if (this.state.rods < 15) {
         this.setValues(this.state.rods + 1);   
         return;
       }
