@@ -17,9 +17,9 @@ class Suanpan extends Component {
       ]),
       nr:0,
       correct:0, 
-      seconds:0,         
+      milliseconds:0,         
       rods:props.initialRods,        
-      maxtime: 120,
+      maxtime: 5000,
       interactionsAllowed: true,  
       bw : 89.45/(Math.max(props.initialRods,5)),
       extra:props.initialRods*2,        
@@ -29,6 +29,10 @@ class Suanpan extends Component {
     };    
     this.setValues(props.initialRods);
   }
+
+  updateTime = (milliSeconds) => {
+    this.setState({ milliseconds:milliSeconds });    
+  };
 
   setValues = (rods) => {
     let bw = 89.45/rods;
@@ -59,11 +63,6 @@ class Suanpan extends Component {
       nr:0,
       interactionsAllowed:true,
     });    
-  };
-
-  updateTime = (milliSeconds) => {
-    const sec = Math.floor(milliSeconds / 1000);
-    this.setState({ seconds:sec });    
   };
   
   newValues = () => {
@@ -161,13 +160,13 @@ class Suanpan extends Component {
          } 
       }            
     }       
-    if (this.state.seconds < this.state.maxtime && total===this.state.total && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {                           
+    if (this.state.milliseconds < this.state.maxtime && total===this.state.total && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {                           
       this.setState({ interactionsAllowed: false });
       this.setState({correct:this.state.correct+1});       
       this.newValues();       
       setTimeout(() => {
          this.resetValue();
-      }, 100);        
+      }, 200);        
     }
     else if (total === this.state.nr+1 && !(this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {             
         this.setState({ nr: this.state.nr + 1 });                
@@ -175,14 +174,14 @@ class Suanpan extends Component {
   }
 
   componentDidUpdate(prevProps) {           
-    if (this.props.isTimer && this.state.seconds >= this.state.maxtime) {      
+    if (this.props.isTimer && this.state.milliseconds >= this.state.maxtime) {      
       this.props.onMaxTime();
     }
     if (this.props.isNewGame && !prevProps.isNewGame) {
       this.resetValue();
       this.newValues();
       this.setState({correct:0});
-      this.setState({seconds:0});             
+      this.setState({milliseconds:0});             
     }
     if (this.props.isReset && (!prevProps  || !prevProps.isReset)) {                        
       this.resetValue();                             
@@ -219,7 +218,7 @@ class Suanpan extends Component {
       this.setState({
         correct:0,
       });      
-      this.setState({seconds:0}); 
+      this.setState({milliseconds:0}); 
     }
     if (this.props.isMultiplication && !prevProps.isMultiplication) {
       this.resetValue();
@@ -227,7 +226,7 @@ class Suanpan extends Component {
       this.setState({
         correct:0,
       });
-      this.setState({seconds:0}); 
+      this.setState({milliseconds:0}); 
     }
     if (this.props.isDivision && !prevProps.isDivision) {
       this.resetValue();
@@ -235,20 +234,20 @@ class Suanpan extends Component {
       this.setState({
         correct:0,
       });
-      this.setState({seconds:0}); 
+      this.setState({milliseconds:0}); 
     }
     if (this.props.isCount && !prevProps.isCount) {
       this.resetValue();
-      this.setState({seconds:0});       
+      this.setState({milliseconds:0});       
     }
     if (!this.props.isCount && prevProps.isCount) {
       this.resetValue();      
-      this.setState({seconds:0}); 
+      this.setState({milliseconds:0}); 
     }    
   }
 
   toggleBead = (rodIndex, beadIndex) => {
-    if (!this.state.interactionsAllowed || this.state.seconds >= this.state.maxtime) {      
+    if (!this.state.interactionsAllowed || this.state.milliseconds >= this.state.maxtime) {      
       return;
     }
     this.setState((prevState) => {     
@@ -399,8 +398,8 @@ class Suanpan extends Component {
       </div>
     )}
 
-    {(this.props.isTimer && this.state.seconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
-    {(this.props.isTimer && this.state.seconds >=this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer">0:0</div>}     
+    {(this.props.isTimer && this.state.milliseconds <this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer"><Timer maxtime={this.state.maxtime} onTimeUpdate={this.updateTime}/></div>}     
+    {(this.props.isTimer && this.state.milliseconds >=this.state.maxtime) && (this.props.isCount || this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) &&  <div className="timer">0:0</div>}     
     {this.props.isTimer && (this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision) && (
         <div className={this.props.isFullScreen ? "answers-fullscreen" : "answers"}>
         {this.state.correct}

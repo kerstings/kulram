@@ -5,7 +5,7 @@ import Suanpan from './Suanpan';
 import KulramFrame from './KulramFrame';
 import './index.css';
 
-function App() {
+await new Promise((resolve) => setTimeout(resolve, 0));function App() {
 
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isReset, setIsReset] = useState(false);
@@ -59,32 +59,28 @@ function App() {
     setIsKulram(false);               
   };
 
-  const handleMoreRods = () => {    
+  const handleMoreRods = async () => {    
     setIsMoreRods(true); 
-    setTimeout(() => {
-      setIsMoreRods(false);
-    }, 0);    
+    await new Promise((resolve) => setTimeout(resolve, 0));  
+    setIsMoreRods(false);    
   };
 
-   const handleFewerRods = () => {    
+   const handleFewerRods = async () => {    
     setIsFewerRods(true); 
-    setTimeout(() => {
-      setIsFewerRods(false);
-    }, 0);   
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    setIsFewerRods(false);    
   };
 
-  const handleRandom = () => {
+  const handleRandom = async () => {
     setIsRandom(true); 
-    setTimeout(() => {
-      setIsRandom(false);
-    }, 0);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    setIsRandom(false);    
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     setIsReset(true);
-    setTimeout(() => {
-      setIsReset(false);
-    }, 0);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    setIsReset(false); 
   };
   
   const handleNumber = () => {    
@@ -159,17 +155,15 @@ function App() {
     setIsNewGame(false);
   };
 
-  const handleNewGame = () => {                     
+  const handleNewGame = async () => {                     
       setIsNewGame(false);    
-      setTimeout(() => {
-        setIsTimeExpired(false);
-      }, 0);      
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      setIsTimeExpired(false);
       setIsNewGame(true);          
   };
 
-  const handleTimer = () => {          
-    setTimeout(() => {      
-    }, 0);      
+  const handleTimer = async () => {          
+    await new Promise((resolve) => setTimeout(resolve, 0));
     setIsTimer(false); 
   };
 
