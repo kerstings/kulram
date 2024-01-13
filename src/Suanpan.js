@@ -19,7 +19,7 @@ class Suanpan extends Component {
       correct:0, 
       milliseconds:0,         
       rods:props.initialRods,        
-      maxtime: 5000,
+      maxtime: 120000,
       interactionsAllowed: true,  
       bw : 89.45/(Math.max(props.initialRods,5)),
       extra:props.initialRods*2,        
