@@ -188,7 +188,7 @@ class Suanpan extends Component {
     } else if (this.props.isRandom && !prevProps.isRandom) {            
       this.randomValue();      
     } else if (!this.props.isShowingBead && prevProps.isShowingBead) {            
-//this.randomValue();      
+      return;
     } else if (this.props.isMoreRods && !prevProps.isMoreRods) {                     
       if (this.state.rods < 15) {
         this.setValues(this.state.rods + 1);   
