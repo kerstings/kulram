@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 import Abacus from './Abacus';
 import Kulram from './Kulram';
 import Suanpan from './Suanpan';
 import KulramFrame from './KulramFrame';
 import './index.css';
 
-await new Promise((resolve) => setTimeout(resolve, 0));function App() {
-
-  const [isFullScreen, setIsFullScreen] = useState(false);
+await new Promise((resolve) => setTimeout(resolve, 0));
+function App() {
+  const handle = useFullScreenHandle();
+  const [isFullScreen, setIsFullScreen] = useState(false);  
   const [isReset, setIsReset] = useState(false);
   const [isRandom, setIsRandom] = useState(false);
   const [isShowingNr, setIsShowingNr] = useState(true);
@@ -180,39 +182,16 @@ await new Promise((resolve) => setTimeout(resolve, 0));function App() {
     height: "11vh",
     width: "8vw",    
   });
-    
-  const enterFullScreen = () => {
-    const element = document.documentElement; 
-    if (element && !isFullScreen) {
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      }
-      setIsFullScreen(true);
-    }
+  
+  const handleToggleFullScreen = () => {
+    handle[handle.active ? 'exit' : 'enter']();
+    setIsFullScreen(!isFullScreen);
   };
 
-  const exitFullScreen = () => {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-    setIsFullScreen(false);
-  };
-  
-  return (
-    <div className="App" onContextMenu={(e)=>e.preventDefault()}>             
-      <div className="button-container" />            
+  return (        
+    <div className="App" onContextMenu={(e)=>e.preventDefault()}>                 
+      <FullScreen handle={handle} >      
+      <div className="button-container"/>            
       {(isKulram||isTeacher||isNumber||isAddition||isSubtraction||isMultiplication||isDivision||isCount) && <button onClick={handleHome} style={getImage("home.png") } title="Home"/>  }                       
       {!isTeacher && !isKulram && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleNumber} style={getImage("digit.png")} title="Enter a given number"/> }
       {!isTeacher && !isKulram && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isCount && <button onClick={handleCount} style={getImage("count.png")} title="Count from 1 and up" /> }
@@ -235,7 +214,7 @@ await new Promise((resolve) => setTimeout(resolve, 0));function App() {
       {(isNumber || isAddition || isSubtraction || isMultiplication || isDivision || isTeacher) && <button onClick={handleReset} style={getImage("zero.png")} title="Set value to 0" /> }  
       {(isCount || isNumber || isAddition || isSubtraction || isMultiplication || isDivision) && isTimer && <button onClick={handleTimer} style={getImage("timer.png")} title="Hide Timer"/> }    
       {(isCount || isNumber || isAddition || isSubtraction || isMultiplication || isDivision) && isTimeExpired && !isNewGame && <button onClick={handleNewGame} style={getImage("newgame.png")} title = "New Game" /> }       
-      {<button onClick={isFullScreen ? exitFullScreen : enterFullScreen} style={getImage("size.png")} title="Fullscreen" /> }       
+      {<button onClick={handleToggleFullScreen} style={getImage("size.png")} title="Fullscreen" /> }       
       {/* Draw the frame and suanpan, if suanpan is selected */ }      
       {isSuanpan && (
       <>        
@@ -263,9 +242,9 @@ await new Promise((resolve) => setTimeout(resolve, 0));function App() {
       <><KulramFrame />                                       
         <Kulram isReset = {isReset} isRandom = {isRandom} isMoreRods = {isMoreRods} isFewerRods = {isFewerRods} isShowingNr = {isShowingNr} isShowingBead = {isShowingBead} isAbacus = {false} isSuanpan= {false} isKulram = {true} isCount = {isCount}/>
       </>
-      )}
-      
-    </div>
+      )}             
+      </FullScreen>      
+    </div>      
   );
 }
 

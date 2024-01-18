@@ -1,3 +1,7 @@
+:not(:root):fullscreen::backdrop{
+  background:  rgba(65, 113, 131, 0.25);
+}
+
 body {
   margin: 0;
   padding:0;
@@ -32,7 +36,7 @@ html {
   text-align: center;    
   padding:0;  
   margin:0;
-  font-size:2.9vmax;
+  font-size:2.7vmax;
   color:rgba(255, 255, 255, 0.9);  
   font-weight: 500;  
   position:relative;
@@ -397,24 +401,9 @@ button:hover {
   transform: scaleX(1.75);     
 }
 
-.nr-fullscreen{    
-  z-index:1;
-  position:absolute;  
-  top:10.3vh;
-  transform: scaleX(1.75);     
-}
-
 .countnr{     
   z-index:1;  
   top:9.8vh;
-  position:absolute;  
-  margin-left:13vw;    
-  transform: scaleX(1.45);    
-}
-
-.countnr-fullscreen{     
-  z-index:1;  
-  top:10.3vh;
   position:absolute;  
   margin-left:13vw;    
   transform: scaleX(1.45);    
@@ -424,15 +413,6 @@ button:hover {
   z-index:1;  
   position:absolute;
   top:9.8vh;
-  margin-left:87.5vw; 
-  color:yellow; 
-  transform: scaleX(1.75);    
-}
-
-.answers-fullscreen{     
-  z-index:1;  
-  position:absolute;
-  top:10.3vh;
   margin-left:87.5vw; 
   color:yellow; 
   transform: scaleX(1.75);    

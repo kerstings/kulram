@@ -1,3 +1,17 @@
+:fullscreen {
+  background-color: rgba(65, 113, 131, 0.25);
+}
+
+/* WebKit browsers (Chrome, Safari) */
+:-webkit-full-screen {
+  background-color: rgba(65, 113, 131, 0.25);
+}
+
+/* Mozilla browsers (Firefox) */
+:-moz-full-screen {
+  background-color: rgba(65, 113, 131, 0.25);
+}
+
 html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
   box-sizing: border-box;
@@ -187,7 +201,7 @@ html {
   width:1.2vw;
   background-color: #7d4d04;  
   border: 0.2vw solid #4d4848;
-    margin-left:98.5vw;
+  margin-left:98.5vw;
   position:absolute;  
   box-shadow: .15vw 0.3vh 0.6vw rgba(0, 0, 0, 0.5);  
 }
@@ -213,14 +227,14 @@ button:hover {
 
 .nr{    
   z-index:1;
-  position:relative;
-  margin-top:-84.5vh;
+  position:relative;  
+  margin-top:-84.5vh;  
   transform: scaleX(1.75);    
 }
 
 .nr2{    
   z-index:1;
-  position:relative;
+  position:relative;    
   margin-top:55vh; /* adjusting for the beads 5*11vh */
   transform: scaleX(1.75);  
 }
