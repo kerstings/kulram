@@ -172,14 +172,14 @@ function App() {
     backgroundImage: value ? `url(${before})` : `url(${after})`,    
     backgroundSize: "100% 100%",
     height: "9.5vh",
-    width: "8.9vw",
+    width: "8.95vw",
   });
 
   const getImage = (image) => ({
     backgroundImage: `url(${image})`,    
     backgroundSize: "100% 100%",
     height: "9.5vh",
-    width: "8.9vw",    
+    width: "8.95vw",    
   });
   
   const handleToggleFullScreen = () => {
