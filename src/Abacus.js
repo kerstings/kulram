@@ -38,9 +38,8 @@ class Abacus extends Component {
     if (rods < 5) {     
       bw = 89.45/5;
       this.setState({
-        extra: (oldbw-bw)*rods/2,
-      });
-  
+        extra : (oldbw-bw)*rods/2,              
+      });  
     } else {
       this.setState({
         extra: 0,        
@@ -50,9 +49,9 @@ class Abacus extends Component {
     this.setState({
       beadWidth : bw,
       rodWidth : bw/6,
-      margin: extra/2+bw*5/12,
+      margin: extra/2+bw*5/12,      
       rods: rods,                   
-    });
+    });            
     this.resetValue();
   }  
 
@@ -158,7 +157,7 @@ class Abacus extends Component {
        this.newValues();           
        setTimeout(() => {
         this.resetValue();
-      }, 250);       
+      }, 200);       
     } else if (total === this.state.nr + 1 && !(this.props.isNumber || this.props.isAddition || this.props.isSubtraction || this.props.isMultiplication || this.props.isDivision)) {
       this.setState({ nr: this.state.nr + 1 });
     }
