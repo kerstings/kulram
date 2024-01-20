@@ -170,12 +170,14 @@ function App() {
 
   const showImage = (value, before, after) => ({
     backgroundImage: value ? `url(${before})` : `url(${after})`,    
+    backgroundSize: "100% 100%",
     height: "9.5vh",
     width: "8.9vw",
   });
 
   const getImage = (image) => ({
     backgroundImage: `url(${image})`,    
+    backgroundSize: "100% 100%",
     height: "9.5vh",
     width: "8.9vw",    
   });
@@ -204,8 +206,8 @@ function App() {
       {isAbacus && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} title = "Show/Hide Beads" style={showImage(isShowingBead, "hideBead.png","showbead.png")} />  }
       {isSuanpan && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && !isKulram && isTeacher && <button onClick={handleToggleImageBead} title = "Show/Hide Beads" style={showImage(isShowingBead, "hideBead.png","showbeadSuanpan.png")} />  }
       {!isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && isTeacher && <button onClick={handleRandom} style={getImage("random.png")} title = "Random Number" /> }
-      {(isNumber || isAddition || isSubtraction || isMultiplication || isDivision || isTeacher) && <button onClick={handleReset} style={getImage("zero.png")} title="Set value to 0" /> }  
       {(isCount || isNumber || isAddition || isSubtraction || isMultiplication || isDivision) && isTimer && <button onClick={handleTimer} style={getImage("timer.png")} title="Hide Timer"/> }    
+      {(isNumber || isAddition || isSubtraction || isMultiplication || isDivision || isTeacher) && <button onClick={handleReset} style={getImage("zero.png")} title="Set value to 0" /> }        
       {(isCount || isNumber || isAddition || isSubtraction || isMultiplication || isDivision) && isTimeExpired && !isNewGame && <button onClick={handleNewGame} style={getImage("newgame.png")} title = "New Game" /> }             
       {isKulram && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsAbacus} style={getImage("soroban.png")} title="Soroban" /> }   
       {isAbacus && !isCount && !isNumber && !isAddition && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsSuanpan} style={getImage("suanpan.png")} title = "Suanpan" /> }
