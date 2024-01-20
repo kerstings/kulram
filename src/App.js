@@ -42,10 +42,10 @@ function App() {
   };
 
   const handleIsKulram = () => {    
+    handleHome(); 
     setIsAbacus(false);
     setIsSuanpan(false);
-    setIsKulram(true);   
-    handleHome(); 
+    setIsKulram(true);       
   };
 
   const handleIsSuanpan = () => {    
@@ -145,6 +145,8 @@ function App() {
     handleNewGame();   
     setIsTimer(true);
     setIsTeacher(false);   
+    if (isKulram)
+       setIsAbacus(true);
   }
 
   const handleMaxTimeExceeded = () => {              
