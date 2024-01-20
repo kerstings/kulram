@@ -194,7 +194,7 @@ function App() {
       {isSuanpan && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleMoreRods} style={getImage("moreRodsSuanpan.png")} title="More Rods" />  }                       
       {isSuanpan && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleFewerRods} style={getImage("fewerRodsSuanpan.png")} title="Fewer Rods" /> }    
       
-      {isKulram && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsAbacus} style={getImage("soroban.png")} title="Soroban" /> }   
+      {isKulram && !isCount && !isNumber && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsAbacus} style={getImage("abacus.png")} title="Soroban" /> }   
       {isAbacus && !isCount && !isNumber && !isAddition && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsSuanpan} style={getImage("suanpan.png")} title = "Suanpan" /> }
       {isSuanpan && !isCount && !isNumber && !isAddition && !isAddition && !isSubtraction && !isMultiplication && !isDivision && <button onClick={handleIsKulram} style={getImage("kulram.png")} title="Abacus" /> }               
       
