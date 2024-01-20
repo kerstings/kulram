@@ -145,8 +145,10 @@ function App() {
     handleNewGame();   
     setIsTimer(true);
     setIsTeacher(false);   
-    if (isKulram)
-       setIsAbacus(true);
+    if (isKulram) {
+      setIsKulram(false);
+      setIsAbacus(true);    
+    }
   }
 
   const handleMaxTimeExceeded = () => {              
