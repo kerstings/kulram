@@ -11,8 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height:100%;
-  overflow:hidden;
+  height:100vh;  
 }
 
 code {
@@ -24,11 +23,10 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
   box-sizing: border-box;
   margin:0;
-  padding:0;    
-  overflow:hidden;  
+  padding:0;      
   cursor:pointer;
   user-select: none;
-  height:100%;
+  height:100vh;
 }
 
 .App {
@@ -40,10 +38,11 @@ html {
   color:rgba(255, 255, 255, 0.9);  
   font-weight: 500;  
   position:relative;
-  height:100%;  
+  height:100vh;  
   text-shadow: 0.25vh 0.25vh 0.3vh rgba(0, 0, 0, 1);
   background-color:rgba(65, 113, 131, 0.25);    
   z-index:0;
+  box-sizing: border-box;
 }
 
 .abacus {  
@@ -54,6 +53,7 @@ html {
   margin-left:1.5vw;  
   height:90vh;  
   vertical-align: top;
+  box-sizing: border-box;
 }
 
 .suanpan {  
@@ -61,6 +61,7 @@ html {
   margin-top:6vh;    
   margin-left:1.5vw;
   height:90vh;  
+  box-sizing: border-box;
 }
 
 .kulram {  
@@ -68,6 +69,7 @@ html {
   margin-top:4vh;      
   margin-left:25.0vw; 
   height:90vh;    
+  box-sizing: border-box;
 }
 
 .bead {  
@@ -181,16 +183,19 @@ html {
   margin-top:0.25vh;    
   height:6.5vh;
   transform: translateY(-0.8vh); 
+  overflow:hidden;
 }
 
 .horizontal-middle {
   margin-top:29.5vh;
   height:2.5vh;
+  overflow:hidden;
 }
 
 .horizontal-bottom {
   margin-top:87.2vh;
   height:2.5vh;
+  overflow:hidden;
 }
 
 .vertical-left {  
@@ -201,6 +206,7 @@ html {
   transform: translateY(-0.8vh);  
   position:absolute;  
   box-shadow: .15vw 0.3vh 0.6vw rgba(0, 0, 0, 0.5);  
+  overflow:hidden;
 }
 
 .vertical-right {  
@@ -212,6 +218,7 @@ html {
   transform: translateY(-0.8vh);  
   position:absolute;  
   box-shadow: .15vw 0.3vh 0.6vw rgba(0, 0, 0, 0.5);  
+  overflow:hidden;
 }
 
 button {  
@@ -343,6 +350,7 @@ button:hover {
 .horizontal-suanpan-middle {
   margin-top:31.7vh;
   height:1.1vh;
+  overflow:hidden;
 }
 
 .upper-bead-suanpan {
@@ -422,7 +430,7 @@ button:hover {
 .timer {
   position:absolute;
   top:1vh;
-  margin-left:84.5vw;
+  margin-left:82.5vw;
   color:black;
   font-size:3.3vmax;    
 }
